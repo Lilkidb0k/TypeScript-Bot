@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es3",
+        "target": "ES2022",
         "module": "commonJS",
         "moduleResolution": "Node",
         "strict": true,
@@ -9,7 +9,9 @@
         "skipLibCheck": true,
         "strictNullChecks": true,
         "resolveJsonModule": true,
-        "outDir": "dist"
+        "outDir": "dist",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true
     },
     "include": ["src"],
     "exclude": ["node_modules"]

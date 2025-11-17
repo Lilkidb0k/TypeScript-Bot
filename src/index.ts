@@ -5,6 +5,7 @@ import {
     Collection
 } from "discord.js";
 
+import { ExtendedClient } from "./types/ExtendedClient";
 import { loadCommands, registerCommands } from "./handlers/commandHandler";
 
 const PREFIX = "!";
@@ -16,7 +17,7 @@ const client = new Client({
         GatewayIntentBits.GuildMembers,
         GatewayIntentBits.MessageContent
     ],
-}) as Client & { commands: Collection<string, any> };
+}) as ExtendedClient;
 
 client.commands = new Collection();
 

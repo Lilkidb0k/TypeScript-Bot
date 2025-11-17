@@ -1,9 +1,10 @@
-import { REST, Routes, Client } from "discord.js";
+import { REST, Routes } from "discord.js";
 import { readdirSync } from "fs";
-import path from "path";
+import * as path from "path";
 import { Command } from "../types/Command";
+import { ExtendedClient } from "../types/ExtendedClient";
 
-export async function loadCommands(client: Client) {
+export async function loadCommands(client: ExtendedClient) {
     const commands: Command[] = [];
     const commandsPath = path.join(__dirname, "..", "commands");
 
@@ -31,7 +32,7 @@ export async function loadCommands(client: Client) {
     return commands;
 }
 
-export async function registerCommands(client: Client, commands: Command[]) {
+export async function registerCommands(client: ExtendedClient, commands: Command[]) {
     const rest = new REST({ version: "10" }).setToken(process.env.TOKEN!);
 
     await rest.put(

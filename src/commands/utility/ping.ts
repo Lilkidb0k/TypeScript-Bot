@@ -12,7 +12,7 @@ export default <Command> {
     async run(interaction) {
 
         const start = Date.now();
-        const r = await interaction.loading("Pinging...", true);
+        const r = await interaction.loading("Pinging...");
         const latency = Date.now() - start;
 
         const container = new ContainerBuilder()

@@ -19,7 +19,8 @@ export default {
         const commandName = args[0] ? args[0].toLowerCase() : null;
         if (!commandName)
             return;
-        const command = message.client.commands.get(commandName);
+        const command = message.client.commands.get(commandName) ||
+            message.client.commands.find(cmd => cmd.aliases?.includes(commandName));
         if (!command)
             return;
         if (!command.userInstallable && (!message.guild || !message.member)) {
@@ -28,7 +29,7 @@ export default {
         ;
         message.client.emit("commandRan", command, message.author);
         try {
-            await command.run(message);
+            await command.run(message, args);
         }
         catch (error) {
             console.error(error);

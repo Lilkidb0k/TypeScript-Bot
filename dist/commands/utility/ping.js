@@ -1,16 +1,21 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const discord_js_1 = require("discord.js");
-const command = {
-    data: new discord_js_1.SlashCommandBuilder()
+import { SlashCommandBuilder, ContainerBuilder, MessageFlags } from "discord.js";
+import { emojis } from "../../utils/emojis.js";
+import { colors } from "../../utils/colors.js";
+export default {
+    name: "ping",
+    userInstallable: true,
+    slashCommand: new SlashCommandBuilder()
         .setName("ping")
-        .setDescription("Replies with Pong!"),
-    async execute(interaction) {
-        await interaction.reply("Pong!");
-    },
-    prefix: "ping",
-    async executePrefix(message) {
-        await message.reply("Pong!");
+        .setDescription("Pong!"),
+    async run(interaction) {
+        const start = Date.now();
+        const r = await interaction.loading("Pinging...", true);
+        const latency = Date.now() - start;
+        const container = new ContainerBuilder()
+            .setAccentColor(colors.yellow)
+            .addTextDisplayComponents(td => td.setContent(`### ${emojis.pong} Pong!`))
+            .addTextDisplayComponents(td => td.setContent(`${emojis.right} **Response Latency:** ${latency}ms`));
+        await r.edit({ content: null, components: [container], flags: MessageFlags.IsComponentsV2 });
     }
 };
-exports.default = command;
+//# sourceMappingURL=ping.js.map

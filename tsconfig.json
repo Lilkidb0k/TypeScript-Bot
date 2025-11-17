@@ -1,18 +1,36 @@
 {
-    "compilerOptions": {
-        "target": "ES2022",
-        "module": "commonJS",
-        "moduleResolution": "Node",
-        "strict": true,
-        "noImplicitAny": true,
-        "declaration": false,
-        "skipLibCheck": true,
-        "strictNullChecks": true,
-        "resolveJsonModule": true,
-        "outDir": "dist",
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true
-    },
-    "include": ["src"],
-    "exclude": ["node_modules"]
+  "compilerOptions": {
+    // Input → Output
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    // ESM environment
+    "module": "nodenext",
+    "target": "es2022",
+    "moduleResolution": "nodenext",
+
+    // Node environment
+    "lib": ["es2022"],
+    "types": ["node"],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+
+    // Helpful output
+    "sourceMap": true,
+    "declaration": false,
+
+    // Relaxed typing for beginners
+    "strict": false,
+    "noUncheckedIndexedAccess": false,
+    "exactOptionalPropertyTypes": false,
+
+    // Safe but non-annoying defaults
+    "isolatedModules": true,
+    //"verbatimModuleSyntax": true,
+    "skipLibCheck": true,
+
+    // Reduce random import edge cases
+    "moduleDetection": "force"
+  },
+  "include": ["src"]
 }

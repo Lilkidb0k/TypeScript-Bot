@@ -2,11 +2,11 @@
   "name": "typescript-bot",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/main.js",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
     "build": "tsc",
-    "start": "node ."
+    "start": "tsc && node dist/main.js",
+    "deploySlash": "tsc && node dist/utils/deploySlashCommands.js"
   },
   "repository": {
     "type": "git",
@@ -15,14 +15,17 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/Lilkidb0k/TypeScript-Bot/issues"
   },
   "homepage": "https://github.com/Lilkidb0k/TypeScript-Bot#readme",
   "dependencies": {
+    "axios": "^1.13.2",
     "discord.js": "^14.24.2",
-    "dotenv": "^17.2.3"
+    "dotenv": "^17.2.3",
+    "luxon": "^3.7.2",
+    "mongoose": "^8.20.0"
   },
   "devDependencies": {
     "@types/node": "^24.10.1",
